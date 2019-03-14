@@ -1,55 +1,60 @@
-<h2>Register your phone</h2>
+<div class="clr-row clr-justify-content-center">
+    <div class="clr-row-md-8">
+            <h2>Register your phone</h2>
 
-<!-- Description of registration process -->
-To subscribe to earthquake alerts in the Bay Area, please type in your phone number below and hit submit.
-
-<!-- Input for user to type in phone number and submit -->
-<form clrForm>
-  <clr-input-container>
-      <label clr-col-2>Phone Number: </label>
-      <input clr-col-2 clrInput type="text" [(ngModel)]="phoneNumber" (input)="checkString(phoneNumber)" name="number" required/>
-      <clr-control-helper>Ex: 19168338138</clr-control-helper>
-      <clr-control-error>Input cannot be empty</clr-control-error>
-  </clr-input-container>
-  <button class="btn btn-primary" type="submit" [disabled]="showErrorHelper" (click)="onRegisterPhoneNumber(phoneNumber)">Add</button>
-</form>
-
-<!-- Test print outs
-<span *ngIf="showErrorHelper"> show error helper</span>
-<br>
-<span *ngIf="stringEmpty"> string empty</span>
-<br>
-<span *ngIf="stringInvalid"> string invalid</span> -->
-
-
-<!-- Test display of numbers submitted -->
-<ul>
-  <li *ngFor="let number of listOfNumbers">{{ number }}</li>
-</ul>
-
-
-<!-- Modal that pops up when user submits phone number -->
-<div *ngIf="showModal">
-<div class="modal">
-  <div class="modal-dialog" role="dialog" aria-hidden="true">
-      <div class="modal-content">
-          <div class="modal-header">
-              <!-- <button aria-label="Close" class="btn close" type="button">
-                  <clr-icon aria-hidden="true" shape="close"></clr-icon>
-              </button> -->
-              <h3 class="modal-title">IMPORTANT!</h3>
-          </div>
-          <div class="modal-body">
-              <p>A text message has been sent to +{{ listOfNumbers[listOfNumbers.length-1] }} for verification. Reply "OK" to verify to finish the registration process.</p>
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-primary" type="button" (click)="closeModal()">Got it, thanks!</button>
-          </div>
-      </div>
-  </div>
+            <!-- Description of registration process -->
+            To subscribe to earthquake alerts in the Bay Area, please type in your phone number below and hit submit.
+            
+            <!-- Input for user to type in phone number and submit -->
+            <form clrForm>
+              <clr-input-container>
+                  <label clr-col-3>Phone Number: </label>
+                  <input clr-col-4 clrInput type="text" [(ngModel)]="phoneNumber" (input)="checkString(phoneNumber)" name="number" required/>
+                  <clr-control-helper>Ex: 19168338138</clr-control-helper>
+                  <clr-control-error>Input cannot be empty</clr-control-error>
+              </clr-input-container>
+              <button class="btn btn-primary" type="submit" [disabled]="showErrorHelper" (click)="onRegisterPhoneNumber(phoneNumber)">Add</button>
+            </form>
+            
+            <!-- Test print outs
+            <span *ngIf="showErrorHelper"> show error helper</span>
+            <br>
+            <span *ngIf="stringEmpty"> string empty</span>
+            <br>
+            <span *ngIf="stringInvalid"> string invalid</span> -->
+            
+            
+            <!-- Test display of numbers submitted -->
+            <ul>
+              <li *ngFor="let number of listOfNumbers">{{ number }}</li>
+            </ul>
+            
+            
+            <!-- Modal that pops up when user submits phone number -->
+            <div *ngIf="showModal">
+            <div class="modal">
+              <div class="modal-dialog" role="dialog" aria-hidden="true">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <!-- <button aria-label="Close" class="btn close" type="button">
+                              <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                          </button> -->
+                          <h3 class="modal-title">IMPORTANT!</h3>
+                      </div>
+                      <div class="modal-body">
+                          <p>A text message has been sent to +{{ listOfNumbers[listOfNumbers.length-1] }} for verification. Reply "OK" to verify to finish the registration process.</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn btn-primary" type="button" (click)="closeModal()">Got it, thanks!</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-backdrop" aria-hidden="true"></div>
+            </div>
+            
+            
+            <p class="p5">To unsubscribe text "STOP" to 123456</p>
+            
+    </div>
 </div>
-<div class="modal-backdrop" aria-hidden="true"></div>
-</div>
-
-
-<p class="p5">To unsubscribe text "STOP" to 123456</p>
