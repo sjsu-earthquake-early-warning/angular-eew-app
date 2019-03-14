@@ -19,7 +19,7 @@ export class ChartComponent implements OnInit {
   public chartData = [
     {data: [
     ],
-       label: 'Series A', fill: false, lineTension: 0, pointRadius: 0 },
+       label: 'Seismic Data', fill: false, lineTension: 0, pointRadius: 0 },
     // {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
   ];
 
