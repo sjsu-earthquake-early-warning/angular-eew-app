@@ -12,6 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from './home/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+import { TwitterfeedComponent } from './home/twitterfeed/twitterfeed.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ChartsModule } from 'ng2-charts';
     RegistrationComponent,
     HomeComponent,
     AboutComponent,
-    ChartComponent
+    ChartComponent,
+    TwitterfeedComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { ChartsModule } from 'ng2-charts';
     ClarityModule,
     BrowserAnimationsModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    NgxTwitterTimelineModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,28 @@
-<h2>Welcome to EEW App</h2>
 
-<h4>Display the following here:</h4>
-<br>
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-offset-md-2 clr-col-md-7">
+    <span>
+    <h2>Welcome to EEW App</h2>
 
-<ul>
-    <li>Live data from nearby earthquake stations</li>
-    <li>News Feed</li>
-    <li>Updates</li>
-  </ul>
+    <h4>You can find the following info on this page:</h4>
+    <br>
+    
+    <ul>
+        <li>Live data from nearby earthquake stations</li>
+        <li>News Feed by USGS</li>
+        <li>Updates</li>
+    </ul>
+    <br>
+    </span>
+  <app-chart></app-chart>
+  </div>
 
-<app-chart></app-chart>
+  <!-- <div class="clr-break-row"></div>
+
+  <div class="clr-col-md-5">
+
+  </div> -->
+  <div class="clr-col-md-3">
+      <app-twitterfeed></app-twitterfeed>
+    </div>
+</div>
