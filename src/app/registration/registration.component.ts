@@ -10,6 +10,7 @@ import { AwsService } from '../aws.service';
 export class RegistrationComponent implements OnInit {
 
   phoneNumber: string = "";
+  confirmMessage: string = "Congratulations! You are now subscribed to SJSU Early Earthquake Warnings. Type 'STOP' to opt out. If you opt out, you cannot opt back in for the next 30 days.";
   stringInvalid: boolean = false;
   stringEmpty: boolean = true;
   showErrorHelper: boolean = true;
@@ -38,16 +39,43 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  onRegisterPhoneNumber (input: string) {
-    this.aws.registerPhone(this.phoneNumber).subscribe(response => {
+  async onRegisterPhoneNumber (input: string) {
+    // console.log('input: ' + input);
+    let number = input;
+    let chars = input.split('');
+    // console.log('chars: ' + chars);
+    if(chars[0] != '1') {
+      chars.unshift('1');
+      number = chars.join('');
+    }
+
+    console.log('number: ' + number);
+    
+    // console.log('number: ' + number);
+
+    await this.aws.registerPhone(number).subscribe(response => {
       try {
-        console.log(response);
+        console.log('AWS registerPhone response: ' + response);
       }
       catch(err) {
         console.log('aws register phone failed');
       }
     });
-    this.listOfNumbers.push(input);
+
+    //send confirmation message
+
+      this.aws.sendMessage(number, this.confirmMessage).subscribe(response=> {
+        try {
+          console.log('AWS sendMessage response: ' + response);
+        }
+        catch(err) {
+          console.log('aws confirm message failed')
+        }
+      })
+    
+    
+  
+    this.listOfNumbers.push(number);
     this.phoneNumber = "";
     this.showErrorHelper = true;
     this.showModal=true;

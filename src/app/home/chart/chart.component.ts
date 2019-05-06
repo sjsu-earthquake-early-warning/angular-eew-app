@@ -15,10 +15,18 @@ export class ChartComponent implements OnInit {
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+          ticks: {
+            max: 10,
+            min: -10,
+            stepSize: 0.1
+          }
+      }]
+  }
   };
 
-  // public chartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public chartLabels = [];
   public chartType = 'line';
   public chartLegend = true;
@@ -32,8 +40,8 @@ export class ChartComponent implements OnInit {
 
   pumpData() {
     let xy = {
-      x: (Math.random()*100),
-      y: (Math.random()*100)
+      x: (Math.random()*1),
+      y: (Math.random()*1-0.5)
     }
 
 
