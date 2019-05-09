@@ -2,26 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Build Instructions For Linux
+* This app requires nodeJS and npm to be installed on your environment. These instructions assume you are running Ubuntu 16.04
+* These instructions also assume you have set up apache where the root folder is in /var/www/html/dist/angular-eew-app/
+  * This can be done by editing the config file in `/etc/apache2/sites-enabled/`
+* Do `npm install -g @angular/cli`
+* Clone this repository with `git clone https://github.com/sjsu-earthquake-early-warning/angular-eew-app.git`
+* Navigate to the sjsu-earthquake-early-warning folder that you cloned
+* Do `npm install`
+* When that is done do `ng build --prod` for production, alternatively do `ng build` for the devleopment version
+* The build will output in a folder called /dist/ in the same directory
+* Copy this /dist/ folder to `/var/www/html/`
+* Then reset apache with `systemctl restart apache2.service`
