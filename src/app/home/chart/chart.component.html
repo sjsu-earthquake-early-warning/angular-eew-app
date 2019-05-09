@@ -1,11 +1,19 @@
 <div>
+  <!--
   <div style="display: block">
     <canvas baseChart
-            [datasets]="chartData"
+            [datasets]="data"
             [labels]="chartLabels"
             [options]="barChartOptions"
             [legend]="chartLegend"
             [chartType]="chartType">
     </canvas>
+  </div>
+  -->
+  <div style="display:block">
+    <canvas #lineChart>{{ chart }}</canvas>
+  </div>
+  <div>
+    <h1>Classfication: {{predictionText}}</h1>
   </div>
 </div>
