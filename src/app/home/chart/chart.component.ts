@@ -21,7 +21,6 @@ export class ChartComponent implements OnInit {
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
-    borderColor: 'rgba(255, 0, 0, .5)',
     scales: {
       yAxes: [{
           ticks: {
@@ -41,17 +40,32 @@ export class ChartComponent implements OnInit {
     }
   };
 
+
+
   public chartLabels = [];
   public chartType = 'line';
   public chartLegend = true;
   public data = {
-      labels: Array(300).fill(0, 0, 300).map((x, i) => i.toString()),
+    // labels: [],
+      labels: Array(300).fill(' ', 0, 300).map((x, i) => x.toString()),
       datasets: [],
+
   };
   public xyData = [];
   public predictionText = '';
 
   pumpData() {
+    let Tminus20 = new Date(Date.now() - 20000);
+    let Tminus17 = new Date(Date.now() - 17000);
+
+    let startTime = Tminus20.toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " ");
+    let endTime = Tminus17.toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " ");
+
+    this.data.labels.shift();
+    this.data.labels.unshift(startTime);
+    this.data.labels.pop();
+    this.data.labels.push(endTime);
+
     let self = this;
     this.wavefetch.getWave().subscribe((response: string) => {
       let resp = response.split('\n');
@@ -60,9 +74,13 @@ export class ChartComponent implements OnInit {
       let data = strData.map((el, ind) => ({ t: ind.toString(), y: el }));
       self.data.datasets[0] = {
         data: data,
-        label: 'Seismic Data', fill: false, lineTension: 0, pointRadius: 0, color: 'red'
+        label: 'Seismic Data', fill: false, lineTension: 0, pointRadius: 0, 
+        borderColor: '#4B9F8A',
+        backgroundColor: '#4B9F8A'
       };
       self.predictionText = pred === "1" ? 'Primary Wave' : 'Signal Noise';
+
+
 
       self.chart = new Chart(this.chartRef.nativeElement, {
         type: 'line',
